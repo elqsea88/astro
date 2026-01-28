@@ -1,17 +1,897 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CarouselHome1 from "../components/CarouselHome1.jsx";
+import CarouselHomeServicios from "../components/CarouselHomeServicios.jsx";
+import CarouselHomeSocios from "../components/CarouselHomeSocios.jsx";
+import Accordion from "../components/Accordion.astro";
+import Tabs from "../components/Tabs.astro";
+
 ---
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Más Seguros</title>
-  </head>
-  <body>
-    <main>
-      <h1>Más Seguros</h1>
-      <p>Sitio estático de ejemplo desplegado en Azure Static Web Apps.</p>
+
+<BaseLayout title="Inicio" mainClass="space-y-20">
+  <section class="content-row tablet:bg-[url('/images/hero-home-1.png')] mobile:bg-[url('/images/hero-home-mob.png')] tablet:bg-cover mobile:bg-cover tablet:bg-[3000px] laptop:bg-center mobile:bg-center laptop:min-h-[530px] tablet:min-h-[390px] mobile:h-[510px]">
+
+    <div class="content-row__inner flex flex-col tablet:py-[70px] mobile:py-[30px] laptop:flex-row laptop:items-center">
+
+      <div class="order-1 min-h-[0] rounded-2xl shadow-inner laptop:order-1 laptop:min-h-[0] laptop:w-1/2"></div>
+
+      <div class="order-2 relative flex flex-col gap-4 text-slate-900 laptop:order-2 laptop:w-1/2">
+        <h1 class="desktop:text-h1 laptop:text-h1 tablet:text-[45px] mobile:text-[36px] !leading-[1.1em] laptop:text-left mobile:text-center">
+          Broker de seguros especializados para transporte pesado y flotillas.
+        </h1>
+        <p class="text-base text-color-negro laptop:text-left mobile:text-center tablet:block mobile:hidden">
+          Preparados para acompañarte en cada kilómetro, con más de 30 años de experiencia.
+        </p>
+        <div class="flex flex-row w-full justify-center laptop:justify-start tablet:mt-[30px] mobile:mt-[360px]">
+  <a
+    href="https://wa.me/525579629948"
+    target="_blank"
+    class="flex items-center justify-center gap-3 text-[16px] font-[500] text-white
+           bg-[#25d366] hover:bg-[#1DAF44]
+           rounded-[4px] px-[40px] py-[12px]
+           tablet:w-auto mobile:w-full
+           origin-center transform-gpu
+           transition-transform duration-200 ease-out
+           hover:scale-105"
+  >
+    <img src="/images/whatsapp-logo.svg" alt="WhatsApp" class="h-[24px] w-[24px]" />
+    Consulta a un asesor
+  </a>
+</div>
+
+      </div>
       
-    </main>
-  </body>
-</html>
+    </div>
+  </section>
+
+  <section class="content-row">
+    <div class="content-row__inner pt-[120px] pb-[80px]">
+      <div class="space-y-3 text-center mb-[50px]">
+        <h2 class="desktop:text-h2 laptop:text-h2 tablet:text-[36px] mobile:text-[30px]">
+          Broker de seguros para operaciones que no pueden detenerse
+        </h2>
+        <h6 class="text-h6 mx-auto text-color-negro">
+          En MAS Seguros diseñamos programas de seguros y asistencias para empresas de transporte, logística y flotas que operan bajo presión constante
+        </h6>
+      </div>
+      <div class="mx-[-24px]">
+        <CarouselHome1 client:load />
+      </div>    
+    </div>
+  </section>
+
+
+  <section class="content-row bg-color-negro py-[80px] w-full">
+    <div class="content-row__inner text-white">
+      <div class=" mb-[50px]">
+        <h2 class="desktop:text-h2 laptop:text-h2 tablet:text-[36px] mobile:text-[30px] text-color-amarillo font-[400] mb-[20px]¿Como">
+          Nuestros servicios
+        </h2>
+        <h3 class="desktop:text-h3 laptop:text-h3 tablet:text-[30px] mobile:text-[24px] text-color-blanco font-[400]">
+          Somos el broker líder en seguros y logística, especialistas en innovación y gestión integral de riesgos.
+        </h3>
+      </div>
+      <div class="mx-[-24px]">
+        <CarouselHomeServicios client:load />
+      </div> 
+    </div>
+  </section>
+
+  <section class="content-row">
+    <div class="content-row__inner">
+      <div class="flex flex-col gap-[16px] rounded-3xl bg-white tablet:py-[50px] mobile:py-[40px] laptop:flex-row laptop:items-center">
+        <div class="order-2 flex-1 laptop:order-1 bg-[#FAFAFA] tablet:py-[48px] tablet:px-[32px] mobile:py-[30px] mobile:px-[16px] rounded-[8px] shadow-[var(--sds-size-depth-0)_var(--sds-size-depth-025)_var(--sds-size-depth-100)_var(--sds-size-depth-0)_var(--sds-color-black-200)]">
+          <h4 class="desktop:text-h4 laptop:text-h4 tablet:text-[24px] mobile:text-[24px] text-color-negro text-center mb-[10px]">Solicita una cotización</h4>
+          <p class="text-center text-sm text-color-negro mb-[40px]">
+            Un asesor especializado se pondrá en contacto contigo para entender tu operación y ofrecerte la mejor solución de seguro.
+          </p>
+          <form
+            class="grid gap-x-4 gap-y-2  text-sm text-slate-700 tablet:grid-cols-2"
+            method="post"
+            action="/api/send-quote" 
+          >
+            <label class="text-[16px] font-[400] text-[#494949]">
+              
+              <input
+                name="nombre"
+                class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                placeholder="Nombre"
+                required
+              />
+            </label>
+            <label class="text-[16px] font-[400] text-[#494949]">
+              
+              <input
+                name="apellido"
+                class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                placeholder="Apellido completo"
+                required
+              />
+            </label>
+            <label class="text-[16px] font-[400] text-[#494949]">
+              
+              <input
+                name="email"
+                type="email"
+                class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                placeholder="Email"
+                required
+              />
+            </label>
+            <label class="text-[16px] font-[400] text-[#494949]">
+              
+              <input
+                name="telefono"
+                type="tel"
+                class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                placeholder="Teléfono"
+                required
+              />
+            </label>
+            <label class="text-[16px] font-[400] text-[#494949]0 tablet:col-span-2">
+              
+              <input
+                name="empresa"
+                class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                placeholder="Empresa"
+              />
+            </label>
+            <label class="tablet:col-span-2 flex items-center gap-2 text-xs text-[#494949]">
+              <input
+                name="terminos"
+                type="checkbox"
+                class="h-4 w-4 rounded border-slate-300 text-[14px] my-[25px]"
+                required
+              />
+              Acepto <a href="/terminos" class="text-color-negro underline">
+                Términos y condiciones
+              </a>
+            </label>
+            <button
+              class="w-full rounded-[4px] bg-[#F9A825] px-[24px] py-[14px] text-[18px] font-[600] font-sans text-slate-900 transition-colors duration-200 hover:bg-[#956516] hover:text-white tablet:col-span-2"
+            >
+              Cotizar ahora
+            </button>
+          </form>
+        </div> 
+        <div class="order-1 flex flex-1 items-center justify-center laptop:order-2 tablet:block mobile:hidden">
+          <div class="w-full overflow-hidden rounded-2xl">
+            <img
+              src="/images/imagen-cotizacion.png"
+              alt="Asesor"
+              class="h-[510px] w-full rounded-xl object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-row">
+    <div class="content-row__inner pt-[0] pb-[70px]">
+      <div class="text-center">
+        <h2 class="title-heading text-2xl tablet:text-3xl mb-[20px]">
+          Protección sin fronteras: cobertura México y USA 
+        </h2>
+        <p class="text-sm text-slate-600 mb-[30px]">
+          Cobertura sin límites para operaciones en movimiento.
+        </p>
+      </div>
+      <Tabs>
+        <div slot="buttons">
+          <button
+            type="button"
+            class="rounded-full !px-[20px] !py-[10px] !min-w-[130px] text-sm font-semibold text-color-negro transition"
+            data-tab-button
+            data-tab-target="zona-mexico"
+          >
+            Zona México
+          </button>
+          <button
+            type="button"
+            class="rounded-full !px-[20px] !py-[10px] !min-w-[130px] text-sm font-semibold text-color-negro transition"
+            data-tab-button
+            data-tab-target="zona-usa"
+          >
+            Zona USA
+          </button>
+        </div>
+        <div slot="panels" class="space-y-6">
+          <div
+            class="flex flex-col gap-[50px] laptop:flex-row laptop:items-start"
+            data-tab-panel="zona-mexico"
+            data-accordion-zone-mexico
+          >
+            <div class="flex-1 self-start rounded-2xl bg-white tablet:sticky tablet:top-[110px] laptop:top-[130px]">
+              <img
+                src="/images/mapa-mexico-sur.png"
+                alt="Mapa de México"
+                class="h-full w-full rounded-xl object-contain"
+                loading="lazy"
+                data-accordion-image
+              />
+            </div>
+            <div class="flex-1 rounded-2xl bg-white laptop:max-w-[570px] mobile:max-w-[800px]">
+              <Accordion>
+
+                <div
+                  class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]"
+                  data-accordion-item
+                  data-accordion-default-open="true"
+                  data-accordion-image-src="/images/mapa-mexico-norte.png"
+                  data-accordion-image-alt="Mapa de México - Zona Norte"
+                >
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Cobertura Zona Norte
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+                        <ul class="flex flex-col">
+                          
+                        <li class="pt-[15px]">
+                              <div class="flex items-start gap-4">
+                                <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                  1
+                                </div>
+                                <div class="flex-1">
+                                  <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                    Mexicali, Baja California
+                                  </h6>
+                                  <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 030 1060
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                            </li>
+
+                        <li class="pt-[15px]">
+                              <div class="flex items-start gap-4">
+                                <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                  2
+                                </div>
+                                <div class="flex-1">
+                                  <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                    Chihuahua, Chihuahua 
+                                  </h6>
+                                  <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                   Teléfono: 800 234 5678
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                            </li>
+                        
+                        <li class="pt-[15px]">
+                              <div class="flex items-start gap-4">
+                                <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                  3
+                                </div>
+                                <div class="flex-1">
+                                  <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                    Gomez Palacio, Durango
+                                  </h6>
+                                  <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 567 8901
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                            </li>
+
+                        <li class="pt-[15px]">
+                              <div class="flex items-start gap-4">
+                                <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                  5
+                                </div>
+                                <div class="flex-1">
+                                  <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                    Centro  Apodaca, Nuevo León 
+                                  </h6>
+                                  <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 030 1060
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                            </li>
+
+                        <li class="pt-[15px]">
+                              <div class="flex items-start gap-4">
+                                <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                  6
+                                </div>
+                                <div class="flex-1">
+                                  <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                    Nuevo Ladero, Tamaulipas 
+                                  </h6>
+                                  <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 030 1060
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                            </li>
+
+                        <li class="pt-[15px]">
+                              <div class="flex items-start gap-4">
+                                <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                  7
+                                </div>
+                                <div class="flex-1">
+                                  <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                    Tampico, Tamaulipas 
+                                  </h6>
+                                  <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 030 1060
+                                  </p>
+                                </div>
+                              </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]"
+                  data-accordion-item
+                  data-accordion-image-src="/images/mapa-mexico-sur.png"
+                  data-accordion-image-alt="Mapa de México - Zona Sur"
+                >
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Cobertura Zona Sur
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+
+                        <ul class="flex flex-col">
+                            
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    1
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Puebla, Puebla
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    2
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Córdova, Veracruz 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 234 5678
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    2
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Mérida, Yucatán
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 234 5678
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+                          
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    3
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Villahermosa, Tabasco
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 567 8901
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                        </ul>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]"
+                  data-accordion-item
+                  data-accordion-image-src="/images/mapa-mexico-occidental.png"
+                  data-accordion-image-alt="Cobertura Zona Occidental"
+                >
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Cobertura Zona Occidental
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+                        <ul class="flex flex-col">
+                            
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    1
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Culiacán, Sinaloa
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    2
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Guadalajara, Querétaro 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 234 5678
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+                          
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    3
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Zapopan, Jalisco
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 567 8901
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+                          
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    4
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      León, Guanajuato 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    5
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Morelia, Michoacán 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]"
+                  data-accordion-item
+                  data-accordion-image-src="/images/mapa-mexico-centro.png"
+                  data-accordion-image-alt="Cobertura Zona Centro"
+                >
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Cobertura Zona Centro
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+                        <ul class="flex flex-col">
+                            
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    1
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Toluca, Estado de México 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    2
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Querétaro, Querétaro  
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                    Teléfono: 800 234 5678
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+                          
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    3
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Cuautitlán, Estado de México 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 567 8901
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+                          
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    4
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      Metropolitanos, Estado de México 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+                          <li class="pt-[15px]">
+                                <div class="flex items-start gap-4">
+                                  <div class="flex h-[32px] w-[32px] flex-shrink-0 items-center justify-center rounded-full bg-[#FAB951] text-[12px] font-[600] text-white">
+                                    6
+                                  </div>
+                                  <div class="flex-1">
+                                    <h6 class="desktop:text-h6 laptop:text-h6 tablet:text-[18px] mobile:text-[18px] font-[500] text-[#494949] mt-[3px]">
+                                      MAS Oficina Matriz, CDMX 
+                                    </h6>
+                                    <p class="mt-[10px] text-[16px] font-[400] leading-[1.2] text-[#3A3A3A]">
+                                      Teléfono: 800 030 1060
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="mt-[20px] h-px w-full bg-[#777777]/40"></div>
+                              </li>
+
+
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </Accordion>
+
+              <a
+                href="/contacto"
+                class="mt-6 w-full rounded-[4px] block bg-[#F9A825] px-[24px] py-[14px] text-[18px] font-[600] font-sans text-slate-900 transition-colors duration-200 hover:bg-[#956516] hover:text-white text-center"
+              >
+                Asegúrate hoy mismo
+              </a>
+            </div>
+            <script>
+              const zonaMexicoAccordion = document.querySelector(
+                "[data-accordion-zone-mexico]",
+              );
+
+              if (zonaMexicoAccordion) {
+                const image = zonaMexicoAccordion.querySelector(
+                  "[data-accordion-image]",
+                );
+                const items = Array.from(
+                  zonaMexicoAccordion.querySelectorAll("[data-accordion-item]"),
+                );
+
+                const updateImage = (item: HTMLElement) => {
+                  if (!image || !item) return;
+                  const { accordionImageSrc, accordionImageAlt } = item.dataset;
+                  if (accordionImageSrc) {
+                    (image as HTMLImageElement).src = accordionImageSrc;
+                  }
+                  if (accordionImageAlt && image instanceof HTMLImageElement) {
+                    image.alt = accordionImageAlt; 
+                  }
+                };
+
+                if (items.length) {
+                  updateImage(items[0]);
+                }
+
+                items.forEach((item) => {
+                  const trigger = item.querySelector("[data-accordion-trigger]") as HTMLElement;
+                  if (!trigger) return;
+
+                  trigger.addEventListener("click", () => {
+                    requestAnimationFrame(() => {
+                      if (item.dataset.open === "true") {
+                        updateImage(item);
+                      }
+                    });
+                  });
+                });
+              }
+            </script>
+          </div>
+          <div
+            class="flex flex-col gap-8 laptop:flex-row"
+            data-tab-panel="zona-usa"
+          >
+            <div class="flex-1 rounded-2xl bg-white p-4">
+              <img
+                src="/images/mapa-usa.png"
+                alt="Mapa de Estados Unidos"
+                class="h-full w-full rounded-xl object-contain max-w-[700px]"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col flex-1 rounded-2xl bg-white space-y-[24px] tablet:py-[48px] mobile:py-[20px] tablet:px-[32px] mobile:px-[0px] laptop:max-w-[465px] mobile:max-w-[800px] justify-center">
+              <h5 class="desktop:text-h5 laptop:text-h5 tablet:text-[20px] mobile:text-[20px]">
+                Cobertura en EUA
+              </h5>
+
+              <p class="subtext">
+                Expandimos tus fronteras: con el respaldo de HUB, te aseguramos en  cualquier punto de Estados Unidos con la misma seguridad y compromiso que nos caracteriza.
+                
+              </p>
+              <p class="!tex-[16px] !mt-[10px] pb-[15px] border-b-[1px] border-[#ddd]"><b>Teléfono:</b> 800 030 1060</p>
+
+              <a
+                href="/contacto"
+                class="mt-6 w-full rounded-[4px] bg-[#F9A825] px-[24px] py-[14px] text-[18px] font-[600] font-sans text-slate-900 transition-colors duration-200 hover:bg-[#956516] hover:text-white text-center"
+              >
+                Asegúrate hoy mismo
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </Tabs>
+    </div>
+  </section>
+
+  <section class="content-row bg-[#F9A825] tablet:py-[100px] mobile:py-[40px]">
+    <div class="content-row__inner tablet:space-y-[60px] mobile:space-y-[30px]">
+      <h2 class="desktop:text-h2 laptop:text-h2 tablet:text-[36px] mobile:text-[24px] text-center text-color-negro">
+        Respondemos a tus preguntas
+      </h2>
+      <div class="mx-auto w-full max-w-[936px]">
+        <Accordion>
+          <div class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+            <button type="button" class="flex w-full items-center justify-between gap-4 bg-white px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+              <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                ¿Cómo puedo cotizar y contratar mi seguro de Auto, Vida o Gastos Médicos con MAS Seguros?
+              </span>
+              
+              <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                <img src="/images/icono-mas.svg" alt="" class="w-[16px]" data-accordion-icon-closed aria-hidden="true"/>
+                <img src="/images/icono-menos.svg" alt="" class="hidden w-[16px]" data-accordion-icon-open aria-hidden="true"/>
+              </span>
+            </button>
+            <div class="bg-white text-sm text-slate-600" data-accordion-content>
+              <div class="px-5 py-4" data-accordion-content-inner>
+                <p class="text-[16px]">
+                  Puede obtener una cotización de forma rápida a través de nuestro sitio web en la sección de "Cotiza tu seguro" o contactando a nuestra línea directa. El proceso es sencillo: 1) Solicita tu cotización, 2) Recibe asesoría sin costo para comparar opciones y 3) Contrata la póliza que mejor se ajuste a tus necesidades. 
+                </p>
+                <a href="/contacto" class="block mt-[20px] text-[#1A767B] text-[18px] font-[400]">
+                  CREA TU COTIZACIÓN AHORA
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+            <button type="button" class="flex w-full items-center justify-between gap-4 bg-white px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+              <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                Si tengo un siniestro, ¿Cuál es el proceso de reporte y qué incluye MAS Assistance? 
+              </span>
+              
+              <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                <img src="/images/icono-mas.svg" alt="" class="w-[16px]" data-accordion-icon-closed aria-hidden="true"/>
+                <img src="/images/icono-menos.svg" alt="" class="hidden w-[16px]" data-accordion-icon-open aria-hidden="true"/>
+              </span>
+            </button>
+            <div class="bg-white text-sm text-slate-600" data-accordion-content>
+              <div class="px-5 py-4" data-accordion-content-inner>
+                <p class="text-[16px]">
+                  El primer paso es llamar a la línea de asistencia de MAS Seguros o al número de su aseguradora. El servicio MAS Assistance para clientes de MAS Seguros incluye: Enlace inmediato con la aseguradora y su ejecutivo de cuenta, seguimiento adicional del caso, y asistencia legal sin costo al momento del siniestro. 
+                </p>
+                <a href="/siniestro" class="block mt-[20px] text-[#1A767B] text-[18px] font-[400]">
+                  REPORTA UN SINIESTRO AHORA
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+            <button type="button" class="flex w-full items-center justify-between gap-4 bg-white px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+              <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                ¿Por qué elegir a MAS Seguros como mi asesor en lugar de contratar directamente con la aseguradora?
+              </span>
+              
+              <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                <img src="/images/icono-mas.svg" alt="" class="w-[16px]" data-accordion-icon-closed aria-hidden="true"/>
+                <img src="/images/icono-menos.svg" alt="" class="hidden w-[16px]" data-accordion-icon-open aria-hidden="true"/>
+              </span>
+            </button>
+            <div class="bg-white text-sm text-slate-600" data-accordion-content>
+              <div class="px-5 py-4" data-accordion-content-inner>
+                <p class="text-[16px]">
+                  Elegir a MAS Seguros significa contar con un especialista en administración de riesgos que trabaja con las mejores aseguradoras de México. Ofrecemos análisis de riesgo, diseño de programas a la medida, gestión de siniestros 24/7 y un servicio post-venta con la calidad certificada ISO 9001, asegurando la mejor solución antes, durante y después de un evento. 
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+            <button type="button" class="flex w-full items-center justify-between gap-4 bg-white px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+              <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                ¿MAS Seguros ofrece coberturas especializadas para Equipo Pesado, Carga y flotas vehiculares?
+              </span>
+              
+              <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                <img src="/images/icono-mas.svg" alt="" class="w-[16px]" data-accordion-icon-closed aria-hidden="true"/>
+                <img src="/images/icono-menos.svg" alt="" class="hidden w-[16px]" data-accordion-icon-open aria-hidden="true"/>
+              </span>
+            </button>
+            <div class="bg-white text-sm text-slate-600" data-accordion-content>
+              <div class="px-5 py-4" data-accordion-content-inner>
+                <p class="text-[16px]">
+                  Sí. Somos especialistas en la innovación de productos para el sector de autotransporte. Ofrecemos seguros para Equipo Pesado, Seguro de Carga (incluyendo RC Carga), Programas de Prevención de Riesgos, Coberturas Especiales como Cruce Fronterizo México - EE. UU., y nuestro exclusivo servicio MAS SATELITAL. 
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+            <button type="button" class="flex w-full items-center justify-between gap-4 bg-white px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+              <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                ¿Qué tipos de seguros corporativos y empresariales maneja MAS Seguros? 
+              </span>
+              
+              <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                <img src="/images/icono-mas.svg" alt="" class="w-[16px]" data-accordion-icon-closed aria-hidden="true"/>
+                <img src="/images/icono-menos.svg" alt="" class="hidden w-[16px]" data-accordion-icon-open aria-hidden="true"/>
+              </span>
+            </button>
+            <div class="bg-white text-sm text-slate-600" data-accordion-content>
+              <div class="px-5 py-4" data-accordion-content-inner>
+                <p class="text-[16px]">
+                  Ofrecemos soluciones integrales que incluyen Seguro Corporativo (Análisis, Contratación y Administración), seguros para la continuidad del negocio, Vida Deudores para respaldo de obligaciones financieras y Garantías y Avales para proteger créditos y contratos. Nos enfocamos en el diseño de programas de seguros a la medida de cada empresa. 
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+            <button type="button" class="flex w-full items-center justify-between gap-4 bg-white px-5 py-[23px] text-left text-sm font-semibold text-slate-800" data-accordion-trigger>
+              <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                ¿Cómo puedo solicitar un cambio en mi póliza o un apoyo para el pago de la prima?
+              </span>
+              
+              <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                <img src="/images/icono-mas.svg" alt="" class="w-[16px]" data-accordion-icon-closed aria-hidden="true"/>
+                <img src="/images/icono-menos.svg" alt="" class="hidden w-[16px]" data-accordion-icon-open aria-hidden="true"/>
+              </span>
+            </button>
+            <div class="bg-white text-sm text-slate-600" data-accordion-content>
+              <div class="px-5 py-4" data-accordion-content-inner>
+                <p class="text-[16px]">
+                  Para cualquier modificación (cambio de vehículo, beneficiarios, o datos personales), debe contactar a su ejecutivo de cuenta o a nuestra área de servicio al cliente. Ofrecemos asesoramiento para optimizar sus costos y encontrar las opciones de pago flexibles que se adapten mejor a su flujo económico. 
+                </p>
+              </div>
+            </div>
+          </div>
+
+         
+        </Accordion>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-row">
+    <div class="content-row__inner max-w-full px-0 py-[100px]">
+      <h2 class="desktop:text-h2 laptop:text-h2 tablet:text-[36px] mobile:text-[30px] text-center mb-[70px]">
+        Nuestros socios comerciales
+      </h2>
+      <CarouselHomeSocios client:load /> 
+    </div>
+  </section>
+
+  
+</BaseLayout>

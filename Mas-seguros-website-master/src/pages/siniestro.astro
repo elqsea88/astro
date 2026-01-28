@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Reportar Siniestro" mainClass="space-y-20">
+
+  <section class="content-row flex items-center bg-[url('/images/hero-contacto.png')] bg-cover laptop:bg-center tablet:bg-[left_0px_bottom]  mobile:bg-[left_1330px_bottom] laptop:min-h-auto mobile:min-h-auto">
+
+    <div class="content-row__inner flex flex-col tablet:py-[0px] mobile:py-[0] laptop:flex-row laptop:items-stretch laptop:justify-center laptop:gap-x-[40px] w-full">
+
+      <div class="order-1 relative flex flex-col justify-center gap-4 text-slate-900 laptop:order-1 laptop:w-1/2 laptop:min-w-[630px] laptop:pt-0 mobile:pt-[30px]">
+        <h1 class="desktop:text-h1 laptop:text-h1 tablet:text-[45px] mobile:text-[30px] !leading-[1.1em] laptop:text-left mobile:text-left tablet:mt-[0px] mobile:mt-[0px] tablet:w-auto mobile:w-[280px] ">
+          Reporta tu siniestro rápido y sin complicaciones
+        </h1>
+        <p>
+         Inicia tu reporte en minutos y recibe asistencia inmediata.
+        </p>
+      </div>
+
+      <div class="order-2 flex laptop:pt-[20px] mobile:pt-[0px] min-h-[0] items-end laptop:justify-start mobile:justify-end rounded-2xl shadow-inner laptop:w-1/2">
+        <img src="/images/contacto-hormiga.png" class="desktop:max-w-[390px] laptop:max-w-[320px] tablet:max-w-[250px] mobile:max-w-[200px]"></img>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="content-row">
+      <div class="content-row__inner">
+        <div class="flex flex-col gap-[16px] rounded-3xl bg-white tablet:py-[50px] mobile:py-[40px] laptop:flex-row laptop:items-stretch">
+          <div class="order-1 flex-1 laptop:order-1 laptop:flex laptop:h-full laptop:flex-col laptop:justify-center bg-[#FAFAFA] tablet:py-[48px] tablet:px-[32px] mobile:py-[30px] mobile:px-[16px] rounded-[8px] shadow-[var(--sds-size-depth-0)_var(--sds-size-depth-025)_var(--sds-size-depth-100)_var(--sds-size-depth-0)_var(--sds-color-black-200)]">
+            <h4 class="desktop:text-h4 laptop:text-h4 tablet:text-[24px] mobile:text-[24px] text-color-negro text-center mb-[10px]">Seguimiento de siniestro</h4>
+            <p class="text-center text-sm text-color-negro mb-[40px]">
+              Si sufriste un siniestro envíanos los detalles y procederemos a ayudarte
+            </p>
+            <form
+              class="grid gap-x-4 gap-y-2 text-sm text-slate-700 tablet:grid-cols-2"
+              method="post"
+              action="/api/send-quote"
+            >
+              <label class="text-[16px] font-[400] text-[#494949]">
+                
+                <input
+                  name="nombre"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Nombre"
+                  required
+                />
+              </label>
+              <label class="text-[16px] font-[400] text-[#494949]">
+                
+                <input
+                  name="apellido"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Apellido completo"
+                  required
+                />
+              </label>
+              <label class="text-[16px] font-[400] text-[#494949]">
+                
+                <input
+                  name="email"
+                  type="email"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Email"
+                  required
+                />
+              </label>
+              <label class="text-[16px] font-[400] text-[#494949]">
+                
+                <input
+                  name="telefono"
+                  type="tel"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Teléfono"
+                  required
+                />
+              </label>
+              <label class="text-[16px] font-[400] text-[#494949]0 tablet:col-span-2">
+                
+                <input
+                  name="empresa"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Numero de siniestro"
+                  required
+                />
+              </label>
+              <label class="text-[16px] font-[400] text-[#494949]0 tablet:col-span-2">
+                
+                <input
+                  name="empresa"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Empresa"
+                  required
+                />
+              </label>
+              <label class="text-[16px] font-[400] text-[#494949]0 tablet:col-span-2">
+                
+                <input
+                  name="empresa"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Describe tu siniestro"
+                  required
+                />
+              </label>
+              <label class="tablet:col-span-2 flex items-center gap-2 text-xs text-[#494949]">
+                <input
+                  name="terminos"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-slate-300 text-[14px] my-[25px]"
+                  required
+                />
+                Acepto <a href="/terminos" class="text-color-negro underline">
+                  Términos y condiciones
+                </a>
+              </label>
+              <button
+                class="w-full rounded-[4px] bg-[#F9A825] px-[24px] py-[14px] text-[18px] font-[600] font-sans text-slate-900 transition-colors duration-200 hover:bg-[#956516] hover:text-white tablet:col-span-2"
+              >
+                Seguimiento de siniestro
+              </button>
+            </form>
+          </div> 
+          <div class="order-2 flex w-full flex-1 flex-col justify-center gap-5 rounded-2xl bg-[#13595C] px-[32px] py-[48px] text-white laptop:order-2 laptop:h-full laptop:max-w-[400px] desktop:max-w-[400px]">
+            <h4 class="text-h4 justify text-center text-white">
+              Contacta con nosotros
+            </h4>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+                <img src="/images/icono-telefono.svg" alt="" class="h-[24px] w-[24px]" />
+                Teléfono
+              </div>
+              <p class="ml-[32px] text-[14px] text-white">
+                Nuestros asesores están disponibles de lunes a viernes, entre las 9 y las 19h.<br>
+                <u>+52 55 7962 9948</u>
+              </p>
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+                <img src="/images/icono-email.svg" alt="" class="h-[24px] w-[24px]" />
+                Email
+              </div>
+              <p class="ml-[32px] text-[14px] text-white">
+                Mándanos un correo y te responderemos enseguida.
+              </p>
+              <p class="ml-[32px] mt-[5px] text-[14px] text-white">
+                <u>mascontacto@masseguro.com</u>
+              </p>
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+                <img src="/images/icono-whatsapp.svg" alt="" class="h-[24px] w-[24px]" />
+                WhatsApp
+              </div>
+              <p class="ml-[32px] text-[14px] text-white">
+                Respondemos a todas tus preguntas de lunes a viernes, de 9 a 19 h.
+              </p>
+              <p class="ml-[32px] mt-[5px] text-[14px] text-white">
+                <u>+52 55 7962 9948</u>
+              </p>
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+                <img src="/images/icono-email.svg" alt="" class="h-[24px] w-[24px]" />
+                Siniestros
+              </div>
+              <p class="ml-[32px] text-[14px] text-white">
+                Nuestros expertos están disponibles para gestionar cualquier incidente.
+              </p>
+              <p class="ml-[32px] mt-[5px] text-[14px] text-white">
+                <u>Habla con un experto</u>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</BaseLayout>

@@ -1,0 +1,268 @@
+---
+import "../styles/global.css";
+import { navItems } from "../data/navItems";
+import BotonFlotante from "../components/BotonFlotante.astro";
+
+const { title, mainClass = "mx-auto max-w-7xl px-6 py-16" } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActiveLink = (href) => {
+  const normalizedHref = href === "/" ? "/" : href.replace(/\/$/, "");
+  return currentPath === normalizedHref;
+};
+const getActiveColor = (href) => (href === "/siniestro" ? "text-[#FF6A2B]" : "text-[#1A767B]");
+const getHoverColor = (href) => (href === "/siniestro" ? "hover:text-[#FF6A2B]" : "hover:text-[#1A767B]");
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Mas Seguros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+3:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://c.webfontfree.com/c.js?f=DIN2014-Demi" type="text/javascript"></script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KSLC72D7');</script>
+    </head>
+  <body class="min-h-screen bg-white text-slate-900 pt-[80px] laptop:pt-[100px]">
+    
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSLC72D7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 shadow-md backdrop-blur laptop:h-[100px] mobile:h-[80px] ">
+      <div class="container flex items-center justify-between gap-4 py-4 laptop:py-5 tablet:py-2 mobile:py-3">
+        <div class="flex items-center">
+          <a href="/"><img src="/images/logo.png" alt="Mas Seguros" class="h-[50px] w-auto tablet:h-[60px]" /></a>
+        </div>
+        <nav class="hidden items-center gap-5 text-sm font-medium text-color-negro laptop:flex">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "transition font-[600] font-Roboto text-[18px]",
+                getHoverColor(item.href),
+                isActiveLink(item.href) ? getActiveColor(item.href) : null
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <a
+          href="/contacto"
+          class="hidden rounded-[4px] border-[2px] border-color-negro px-[21px] py-[13px] text-[18px] font-[500] text-color-negro transition hover:bg-color-negro hover:border-color-blanco hover:text-color-blanco laptop:inline-flex"
+        >
+          Cotiza tu seguro
+        </a>
+
+        <button
+          class="flex flex-col items-center justify-center gap-1 rounded-[4px] border-[2px] border-color-negro px-[21px] py-[17px] text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 laptop:hidden"
+          type="button"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="h-0.5 w-6 rounded-full bg-current"></span>
+          <span class="h-0.5 w-6 rounded-full bg-current"></span>
+          <span class="h-0.5 w-6 rounded-full bg-current"></span>
+        </button>
+      </div>
+    </header>
+    <div
+      class="pointer-events-none fixed inset-0 z-40 bg-slate-900/40 opacity-0 transition laptop:hidden"
+      data-menu-overlay
+    ></div>
+    <aside
+      id="mobile-menu"
+      class="fixed right-0 top-0 z-50 h-screen w-[90vw] max-w-[90vw] translate-x-full bg-white px-6 py-8 text-sm font-medium text-slate-700 shadow-xl transition-transform duration-300 tablet:w-full tablet:max-w-[360px] laptop:hidden"
+      data-menu-panel
+    >
+      <div class="flex items-center justify-between">
+        <span class="text-[20px] font-semibold text-slate-900">Menú</span>
+        <button
+          class="rounded-full border border-slate-200 px-3 py-1 text-[16px] font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
+          type="button"
+          data-menu-close
+        >
+          Cerrar
+        </button>
+      </div>
+      <nav class="flex flex-col gap-4 my-[40px]">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              "transition text-[18px]",
+              getHoverColor(item.href),
+              isActiveLink(item.href) ? getActiveColor(item.href) : null
+            ]}
+            data-menu-link
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href="/contacto"
+        class="!w-full mt-[50px] rounded-[4px] border-[2px] border-color-negro px-[21px] py-[13px] text-[18px] font-[500] text-color-negro transition hover:bg-color-negro hover:border-color-blanco hover:text-color-blanco laptop:inline-flex"
+      >
+        Cotiza tu seguro
+      </a>
+
+    </aside>
+
+    <main class={mainClass}>
+      <slot />
+    </main>
+    <BotonFlotante />
+    <footer class="content-row bg-color-negro">
+      <div class="content-row__inner tablet:py-[100px] mobile:py-[50px] text-white space-y-[50px]">
+        <div class="grid gap-6 mobile:grid-cols-2 mobile:items-center">
+          <div>
+            <img src="/images/logo-blanco.png" alt="Mas Seguros" class="max-h-[80px] w-auto" />
+          </div>
+          <div class="flex mobile:justify-end">
+            <a
+              href="https://https://wa.me/525579629948"
+              class="flex h-[45px] w-[45px] items-center justify-center gap-3 rounded-full bg-color-verde text-[16px] font-[500] text-white tablet:h-auto tablet:w-[200px] tablet:rounded-[50px] tablet:px-[16px] tablet:py-[10px] mobile:py-[12px]"
+            >
+              <img src="/images/whatsapp-logo.svg" alt="WhatsApp" class="h-[24px] w-[24px]" />
+              <span class="hidden tablet:inline">¿Hablamos?</span>
+          </a>
+          </div>
+        </div>
+
+        <div class="grid gap-[20px] laptop:grid-cols-4 tablet:grid-cols-2">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+              <img src="/images/icono-telefono.svg" alt="" class="h-[24px] w-[24px]" />
+              Teléfono
+            </div>
+            <p class="text-[14px] ml-[32px] text-slate-200">
+              Nuestros asesores están disponibles de lunes a viernes, entre las 9 y las 19h.<br>
+            </p>
+            <p class="text-[14px] ml-[32px] text-slate-200 mt-[10px]">
+              CDMX: <u><a href="tel:525556828781">55 5682 8781</a></u><br>
+              Interior: <u><a href="tel:8000301060">800 030 1060</a></u>
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+              <img src="/images/icono-email.svg" alt="" class="h-[24px] w-[24px]" />
+              Email
+            </div>
+            <p class="text-[14px] ml-[32px] text-slate-200">
+              Mándanos un correo y te responderemos enseguida.
+            </p>
+            <p class="text-[14px] ml-[32px] text-slate-200 mt-[5px]">
+              <u><a href="mailto:mascontacto@masseguro.com">mascontacto@masseguro.com</a></u>
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+              <img src="/images/icono-whatsapp.svg" alt="" class="h-[24px] w-[24px]" />
+              WhatsApp
+            </div>
+            <p class="text-[14px] ml-[32px] text-slate-200">
+              Respondemos a todas tus preguntas de lunes a viernes, de 9 a 19 h.
+            </p>
+             <p class="text-[14px] ml-[32px] text-slate-200 mt-[5px]">
+              <u><a href="https://wa.me/525579629948">+52 55 7962 9948</a></u>
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-[20px] font-Roboto font-[500]">
+              <img src="/images/icono-email.svg" alt="" class="h-[24px] w-[24px]" />
+              Siniestros
+            </div>
+            <p class="text-[14px] ml-[32px] text-slate-200">
+              Nuestros expertos están disponibles para gestionar cualquier incidente.
+            </p>
+            <p class="text-[14px] ml-[32px] text-slate-200 mt-[5px]">
+              <u><a href="/siniestro">Habla con un experto</a></u>
+            </p>
+          </div>
+        </div>
+
+        <nav class="flex flex-col gap-4 text-[16px] font-[500] text-white laptop:flex-row laptop:gap-6 border-t border-white/50 pt-[30px]">
+          {navItems.map((item) => (
+            <a href={item.href} class="transition hover:text-color-amarillo">
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div class="flex flex-col !gap-[10px] border-b border-white/50 pb-[30px] tablet:flex-row tablet:items-center tablet:justify-start">
+          <div class="flex items-center gap-4">
+            <span class="text-[16px] font-[500]">Siguenos</span>
+            <a href="https://www.linkedin.com/company/mas-seguros" class="rounded-full border border-white/20 p-2 transition hover:border-white/50" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                <path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-9.8 16.2v-8.2H6.6v8.2h2.6zm-1.3-9.4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11.1 9.4v-4.6c0-2.5-1.3-3.7-3.1-3.7-1.4 0-2.3.8-2.7 1.6v-1.4h-2.6v8.2h2.6v-4.3c0-1.1.2-2.2 1.6-2.2s1.6 1.2 1.6 2.3v4.2h2.6z" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/MasSegurosCorp" class="rounded-full border border-white/20 p-2 transition hover:border-white/50" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                <path d="M13.5 9H15V6.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H6v2.8h2.8V21h3.3v-5.6h2.5l.4-2.8h-2.9v-2c0-.8.2-1.4 1.4-1.4z" />
+              </svg>
+            </a>
+          </div>
+          <ul class="flex flex-col gap-3 text-[14px] text-slate-200 tablet:flex-row tablet:gap-6 ">
+            <li><a href="/privacidad" class="transition hover:text-white">Aviso de privacidad</a></li>
+            <li><a href="/trabajo" class="transition hover:text-white">Bolsa de Trabajo</a></li>
+          </ul>
+        </div>
+
+        <p class="text-[14px] text-white !mt-[20px]">
+          Copyright 2026. Rove Asociados, Agente de Seguros y Fianzas, S.A. de C.V. Todos los Derechos Reservados
+        </p>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.querySelector("[data-menu-toggle]");
+      const overlay = document.querySelector("[data-menu-overlay]");
+      const panel = document.querySelector("[data-menu-panel]");
+      const closeButton = document.querySelector("[data-menu-close]");
+      const menuLinks = document.querySelectorAll("[data-menu-link]");
+
+      if (toggle && overlay && panel) {
+        const closeMenu = () => {
+          panel.classList.add("translate-x-full");
+          panel.classList.remove("translate-x-0");
+          overlay.classList.add("opacity-0", "pointer-events-none");
+          overlay.classList.remove("opacity-100");
+          toggle.setAttribute("aria-expanded", "false");
+          document.body.classList.remove("overflow-hidden");
+        };
+
+        const openMenu = () => {
+          panel.classList.remove("translate-x-full");
+          panel.classList.add("translate-x-0");
+          overlay.classList.remove("opacity-0", "pointer-events-none");
+          overlay.classList.add("opacity-100");
+          toggle.setAttribute("aria-expanded", "true");
+          document.body.classList.add("overflow-hidden");
+        };
+
+        toggle.addEventListener("click", () => {
+          if (panel.classList.contains("translate-x-full")) {
+            openMenu();
+          } else {
+            closeMenu();
+          }
+        });
+
+        overlay.addEventListener("click", closeMenu);
+        closeButton?.addEventListener("click", closeMenu);
+        menuLinks.forEach((link) => link.addEventListener("click", closeMenu));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+---
+const whatsappNumber = "525579629948";
+const phoneNumber = "+525579629948";
+
+const whatsappLink = `https://wa.me/${whatsappNumber}`;
+const phoneLink = `tel:${phoneNumber.replace(/\s/g, "")}`;
+---
+
+<div class="fixed right-[20px] top-1/2 z-30 flex -translate-y-1/2 flex-col items-end gap-3">
+  <a
+    href={whatsappLink}
+    class="group flex items-center gap-0 overflow-hidden rounded-full transition bg-[#25d366] hover:bg-[#1DAF44] text-white shadow-lg shadow-black/20 transition-[width,box-shadow,padding] duration-300 hover:shadow-xl mobile:h-[50px] mobile:w-[50px] mobile:justify-center tablet:h-[70px] tablet:w-[70px] tablet:justify-center laptop:justify-center laptop:hover:justify-start laptop:hover:gap-3 laptop:hover:w-[310px] laptop:hover:px-4"
+    aria-label="WhatsApp"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <img src="/images/whatsapp-logo.svg" alt="" class="mobile:h-[22px] mobile:w-[22px] tablet:h-[32px] tablet:w-[32px]" />
+    <span class="hidden laptop:inline-flex max-w-0 origin-right scale-x-0 items-center overflow-hidden whitespace-nowrap text-[18px] font-medium opacity-0 transition-[max-width,transform,opacity] duration-300 group-hover:max-w-[220px] group-hover:scale-x-100 group-hover:opacity-100">
+      CONSULTAR A UN ASESOR
+    </span>
+  </a>
+  <a
+    href="/siniestro"
+    class="group flex items-center gap-0 overflow-hidden rounded-full bg-[#FF6A2B] text-white shadow-lg shadow-black/20 transition-[width,box-shadow,padding] duration-300 hover:shadow-xl mobile:h-[50px] mobile:w-[50px] mobile:justify-center tablet:h-[70px] tablet:w-[70px] tablet:justify-center laptop:justify-center laptop:hover:justify-start laptop:hover:gap-3 laptop:hover:w-[270px] laptop:hover:px-4"
+    aria-label="Llamar por teléfono"
+  >
+    <img src="/images/icono-telefono-24.svg" alt="" class="mobile:h-[22px] mobile:w-[22px] tablet:h-[32px] tablet:w-[32px]" />
+    <span class="hidden laptop:inline-flex max-w-0 origin-right scale-x-0 items-center overflow-hidden whitespace-nowrap text-[18px] font-[500] opacity-0 transition-[max-width,transform,opacity] duration-300 group-hover:max-w-[200px] group-hover:scale-x-100 group-hover:opacity-100">
+      REPORTAR SINIESTRO
+    </span>
+  </a>
+</div>

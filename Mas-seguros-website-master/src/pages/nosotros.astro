@@ -1,0 +1,357 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CarouselNosotrosHistoria from "../components/CarouselNosotrosHistoria.jsx";
+import Accordion from "../components/Accordion.astro";
+
+
+const experienceItems = [
+  "Respaldo comprobado con más de 71 mil unidades aseguradas y más de 5 mil clientes.",
+  "En MAS Seguros entendemos tu negocio y tus necesidades de protección.",
+  "Prima emitida por más de $1,934 mdp en seguro de equipo pesado en 2019.",
+  "Somos el MAS especializado en equipo pesado.",
+  "Personal capacitado y comprometido que marca la diferencia.",
+  "Protegemos lo que mueve a México."
+];
+---
+
+<BaseLayout title="Acerca de nosotros" mainClass="space-y-20">
+
+  <section class="content-row flex items-center bg-[url('/images/hero-nosotros.png')] bg-cover laptop:bg-center tablet:bg-[left_0px_bottom]  mobile:bg-[left_1330px_bottom] laptop:min-h-[450px] mobile:min-h-[390px]">
+
+    <div class="content-row__inner flex flex-col tablet:py-[0px] mobile:py-[50px] laptop:flex-row laptop:items-center laptop:justify-center laptop:gap-x-[40px] w-full">
+
+      <div class="order-1 relative flex flex-col gap-4 text-slate-900 laptop:order-1 laptop:w-1/2 laptop:min-w-[630px]">
+        <h1 class="desktop:text-h1 laptop:text-h1 tablet:text-[45px] mobile:text-[30px] !leading-[1.1em] laptop:text-left mobile:text-left tablet:mt-[0px] mobile:mt-[-100px] tablet:w-auto mobile:w-[280px] ">
+          30 años de confianza: su broker líder en seguros y administración de riesgos 
+        </h1>
+      </div>
+
+      <div class="order-2 min-h-[0] rounded-2xl shadow-inner laptop:w-1/2"></div>
+
+    </div>
+  </section>
+
+  <section class="content-row">
+      <div class="content-row__inner pt-[70px] pb-[30px] overflow-hidden">
+
+          <p class="subtext text-center text-color-negro mb-[50px]">
+          Somos el resultado de una visión de tres décadas que ha posicionado a nuestra empresa como el referente indiscutible en el 
+          sector asegurador. Partiendo de los 80's y consolidándonos como el especialista #1 en Equipo Pesado, nuestra historia es la 
+          prueba de nuestro compromiso con la innovación y el crecimiento. Conoce los hitos que definieron nuestra experiencia.
+          </p>
+
+          <CarouselNosotrosHistoria client:load />
+
+      </div>
+  </section>
+
+  <section class="content-row">
+      <div class="content-row__inner py-[30px]">
+
+        <div class="grid gap-8 rounded-3xl bg-color-negro tablet:py-[64px] tablet:px-[40px] mobile:py-[40px] mobile:px-[16px]  text-white tablet:grid-cols-[1.1fr_1fr]">
+            <div class="flex flex-col justify-center space-y-4 h-full">
+              <h2 class="desktop:text-h2 laptop:text-h2 tablet:text-[36px] mobile:text-[30px]">
+                Aseguramos tu tranquilidad en el camino
+              </h2>
+              <p class="subtext text-slate-200">
+                Una promesa que hoy respalda con orgullo a 1 de cada 4 tracto-camiones en México.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              
+              <Accordion>
+                <div class="overflow-hidden rounded-xl border bg-white border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-[#1A767B]" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Misión
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+                      <p class="text-[16px]">
+                      1 de cada 4 tracto-camiones en México está con MAS Seguros.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="overflow-hidden rounded-xl border bg-white border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-[#1A767B]" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Visión
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+                      <p class="text-[16px]">
+                      Aseguramos tu tranquilidad en el camino.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="overflow-hidden rounded-xl border bg-white border-slate-200 shadow-[0px_1px_2px_rgba(0,0,0,0.15)]" data-accordion-item>
+                  <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-[23px] text-left text-sm font-semibold text-[#1A767B]" data-accordion-trigger>
+                      <span class="font-roboto tablet:text-[20px] mobile:text-[18px] font-[500] leading-[1.2em]">
+                        Valores
+                      </span>
+                      
+                      <span class="flex h-5 w-5 items-center justify-center text-orange-500">
+                        <img src="/images/chevron-down.svg" alt="" class="w-[18px]" data-accordion-icon-closed aria-hidden="true"/>
+                        <img src="/images/chevron-up.svg" alt="" class="hidden w-[18px]" data-accordion-icon-open aria-hidden="true"/>
+                      </span>
+                  </button>
+                  <div class="text-sm text-slate-600" data-accordion-content>
+                    <div class="px-5 py-4" data-accordion-content-inner>
+                     <p class="text-[16px]">
+                      <span class="mb-[10px] w-full block">Lograr resultados.</span> 
+                      <span class="mb-[10px] w-full block">Pasión por el servicio.</span>
+                      <span class="mb-[10px] w-full block">Responsabilidad.</span>
+                      <span class="mb-[10px] w-full block">Sentido de urgencia.</span>
+                      <span class="mb-[10px] w-full block">Mejora Continua.</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Accordion>
+
+            </div>
+          </div>
+        
+      </div>
+  </section>
+
+  <section class="content-row bg-color-negro">
+      <div class="content-row__inner tablet:py-[80px] mobile:py-[40px]">
+
+        <div class="grid gap-8 rounded-3xl text-white tablet:grid-cols-[1.2fr_0.8fr]">
+          <div class="flex flex-col justify-center h-full space-y-4">
+            <h2 class="desktop:text-h2 laptop:text-h2 tablet:text-[36px] mobile:text-[30px] text-[#F9A825]">Política de Calidad</h2>
+            <h5 class="desktop:text-h5 laptop:text-h5 tablet:text-[20px] mobile:text-[20px] text-slate-200 font-[500]">
+              En MAS Seguros estamos comprometidos en ofrecer Servicios de Asesoría Especializada en Administración de Riesgo
+            </h5>
+            <p class="text-slate-200">
+              Procurando exceder las expectativas de nuestros Clientes con Procesos de Negocio apegados a la normatividad aplicable, 
+              impulsando Procesos de Mejora Continua y en apego a un desarrollo sostenible. En marzo de 2020 MAS Seguros® obtuvo su 
+              Certificación en ISO 9001
+
+            </p>
+            <p class="text-slate-200">
+              Ratificamos nuestro compromiso con la calidad, estableciendo normas y procedimientos en 
+              el aseguramiento de <b>Nuestros Clientes, Gestión de Siniestros</b> y <b>Prevención de Riesgos.</b>
+            </p>
+          </div>
+          <div class="flex flex-col items-center justify-center">
+            <img src="/images/iso-calidad.png" class="w-[276px]">
+          </div>
+        </div>
+        
+      </div>
+  </section>
+
+  <section class="content-row">
+      <div class="content-row__inner tablet:py-[80px] mobile:py-[40px]">
+
+        <h3 class="desktop:text-h3 laptop:text-h3 tablet:text-[30px] mobile:text-[30px] text-center mb-[50px]">
+          Nuestra experiencia nos respalda con <span class="text-[#1A767B]">MÁS de 30 años</span>
+          como bróker de seguros.
+        </h3>
+
+          <ul class="grid grid-cols-1 tablet:grid-cols-2 gap-x-[50px] gap-y-[30px] max-w-[1000px] justify-center mx-auto">
+
+            <li class="flex items-start gap-[10px] max-w-[450px]">
+              <img src="/images/icono-check.svg" class="w-[24px] h-[24px] flex-shrink-0" alt=""/>
+              <span class="text-[20px] font-Roboto">
+                Respaldo comprobado con más de 71 mil unidades aseguradas y más de 5 mil clientes.
+              </span>
+            </li>
+
+            <li class="flex items-start gap-[10px] max-w-[450px]">
+              <img src="/images/icono-check.svg" class="w-[24px] h-[24px] flex-shrink-0" alt=""/>
+              <span class="text-[20px] font-Roboto">
+                Prima emitida por más de $2,700 mdp en seguro de equipo pesado en 2025.
+              </span>
+            </li>
+
+            <li class="flex items-start gap-[10px] max-w-[450px]">
+              <img src="/images/icono-check.svg" class="w-[24px] h-[24px] flex-shrink-0" alt=""/>
+              <span class="text-[20px] font-Roboto">
+                Personal capacitado y comprometido que marca la diferencia.
+              </span>
+            </li>
+
+            <li class="flex items-start gap-[10px] max-w-[450px]">
+              <img src="/images/icono-check.svg" class="w-[24px] h-[24px] flex-shrink-0" alt=""/>
+              <span class="text-[20px] font-Roboto">
+                En MAS Seguros® entendemos tu negocio.
+              </span>
+            </li>
+
+            <li class="flex items-start gap-[10px] max-w-[450px]">
+              <img src="/images/icono-check.svg" class="w-[24px] h-[24px] flex-shrink-0" alt=""/>
+              <span class="text-[20px] font-Roboto">
+                Somos el MAS especializado en equipo pesado.
+              </span>
+            </li>
+
+            <li class="flex items-start gap-[10px] max-w-[450px]">
+              <img src="/images/icono-check.svg" class="w-[24px] h-[24px] flex-shrink-0" alt=""/>
+              <span class="text-[20px] font-Roboto">
+                Protegemos lo que mueve a México.
+              </span>
+            </li>
+
+              
+          </ul>
+      </div>
+  </section>
+
+
+  
+
+    <section class="content-row">
+      <div class="content-row__inner">
+        <div class="flex flex-col gap-[16px] rounded-3xl bg-white tablet:py-[50px] mobile:py-[40px] laptop:flex-row laptop:items-center">
+          <div class="order-2 flex-1 laptop:order-1 bg-[#FAFAFA] tablet:py-[48px] tablet:px-[32px] mobile:py-[30px] mobile:px-[16px] rounded-[8px] shadow-[var(--sds-size-depth-0)_var(--sds-size-depth-025)_var(--sds-size-depth-100)_var(--sds-size-depth-0)_var(--sds-color-black-200)]">
+            <h4 class="desktop:text-h4 laptop:text-h4 tablet:text-[24px] mobile:text-[24px] text-color-negro text-center mb-[10px]">Solicita una cotización</h4>
+            <p class="text-center text-sm text-color-negro mb-[20px]">
+              Solicita información y un asesor se pondrá en contacto.
+            </p>
+            <form
+              class="grid gap-x-4 gap-y-2 text-sm text-slate-700 tablet:grid-cols-2"
+              method="post"
+              action="/api/send-quote"
+            >
+              <label class="text-[16px] font-[400] text-[#494949]">
+                <input
+                  name="nombre"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Nombre"
+                  required
+                />
+              </label>
+
+              <label class="text-[16px] font-[400] text-[#494949]">
+                <input
+                  name="apellido"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Apellido completo"
+                  required
+                />
+              </label>
+
+              <label class="text-[16px] font-[400] text-[#494949]">
+                <input
+                  name="email"
+                  type="email"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Email"
+                  required
+                />
+              </label>
+
+              <label class="text-[16px] font-[400] text-[#494949]">
+                <input
+                  name="telefono"
+                  type="tel"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Teléfono"
+                  required
+                />
+              </label>
+
+              <label class="text-[16px] font-[400] text-[#494949] tablet:col-span-2">
+                <select
+                  name="estado"
+                  required
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 bg-white"
+                >
+                  <option value="" disabled selected>Selecciona tu estado</option>
+                  <option>Aguascalientes</option>
+                  <option>Baja California</option>
+                  <option>Baja California Sur</option>
+                  <option>Campeche</option>
+                  <option>Chiapas</option>
+                  <option>Chihuahua</option>
+                  <option>Ciudad de México</option>
+                  <option>Coahuila</option>
+                  <option>Colima</option>
+                  <option>Durango</option>
+                  <option>Estado de México</option>
+                  <option>Guanajuato</option>
+                  <option>Guerrero</option>
+                  <option>Hidalgo</option>
+                  <option>Jalisco</option>
+                  <option>Michoacán</option>
+                  <option>Morelos</option>
+                  <option>Nayarit</option>
+                  <option>Nuevo León</option>
+                  <option>Oaxaca</option>
+                  <option>Puebla</option>
+                  <option>Querétaro</option>
+                  <option>Quintana Roo</option>
+                  <option>San Luis Potosí</option>
+                  <option>Sinaloa</option>
+                  <option>Sonora</option>
+                  <option>Tabasco</option>
+                  <option>Tamaulipas</option>
+                  <option>Tlaxcala</option>
+                  <option>Veracruz</option>
+                  <option>Yucatán</option>
+                  <option>Zacatecas</option>
+                </select>
+              </label>
+
+              <label class="text-[16px] font-[400] text-[#494949] tablet:col-span-2">
+                <input
+                  name="empresa"
+                  class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3"
+                  placeholder="Empresa"
+                />
+              </label>
+
+              <label class="tablet:col-span-2 flex items-center gap-2 text-xs text-[#494949]">
+                <input
+                  name="terminos"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-slate-300 text-[14px] my-[25px]"
+                  required
+                />
+                Acepto
+                <a href="/terminos" class="text-color-negro underline">
+                  Términos y condiciones
+                </a>
+              </label>
+
+              <button
+                class="w-full rounded-[4px] bg-[#F9A825] px-[24px] py-[14px] text-[18px] font-[600] font-sans text-slate-900 transition-colors duration-200 hover:bg-[#956516] hover:text-white tablet:col-span-2"
+              >
+                Cotizar ahora
+              </button>
+            </form>
+          </div> 
+          <div class="order-1 flex flex-1 items-center justify-center laptop:order-2 tablet:block mobile:hidden">
+            <div class="w-full overflow-hidden rounded-2xl">
+              <img
+                src="/images/imagen-cotizacion.png"
+                alt="Asesor"
+                class="h-[600px] w-full rounded-xl object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+const { defaultTab } = Astro.props;
+---
+
+<div class="space-y-6" data-tabs data-default-tab={defaultTab}>
+  <div class="flex justify-center">
+    <div
+      class="flex flex-wrap items-center justify-center gap-2 rounded-[50px] bg-white px-[12px] py-[8px] shadow-md"
+    >
+      <slot name="buttons" />
+    </div>
+  </div>
+  <div>
+    <slot name="panels" />
+  </div>
+</div>
+
+<script>
+  const tabContainers = document.querySelectorAll("[data-tabs]");
+
+  tabContainers.forEach((container) => {
+    const buttons = Array.from(container.querySelectorAll("[data-tab-button]"));
+    const panels = Array.from(container.querySelectorAll("[data-tab-panel]"));
+
+    if (!buttons.length || !panels.length) return;
+
+    const defaultTab = container.getAttribute("data-default-tab") || buttons[0].dataset.tabTarget;
+
+    const setActiveTab = (tabName) => {
+      buttons.forEach((button) => {
+        const isActive = button.dataset.tabTarget === tabName;
+        button.classList.toggle("bg-[#F9A825]", isActive);
+        button.classList.toggle("transition-colors", isActive);
+        button.classList.toggle("duration-200", isActive);
+        button.classList.toggle("hover:bg-[#956516]", isActive);
+        button.classList.toggle("hover:text-white", isActive);
+        button.classList.toggle("px-[20px]", isActive);
+        button.classList.toggle("py-[10px]", isActive);
+        button.classList.toggle("rounded-[50px]", isActive);
+        button.classList.toggle("min-w-[130px]", isActive);
+        button.classList.toggle("text-slate-900", isActive);
+        button.classList.toggle("text-slate-700", !isActive);
+        button.setAttribute("aria-selected", String(isActive));
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("hidden", panel.dataset.tabPanel !== tabName);
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setActiveTab(button.dataset.tabTarget);
+      });
+    });
+
+    setActiveTab(defaultTab);
+  });
+</script>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    [data-tab-button] {
+      transition: none;
+    }
+  }
+</style>

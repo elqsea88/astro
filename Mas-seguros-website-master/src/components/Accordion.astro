@@ -1,0 +1,76 @@
+<div class="space-y-3" data-accordion>
+  <slot />
+</div>
+
+<script>
+  const accordions = document.querySelectorAll("[data-accordion]");
+
+  const setItemOpen = (item, isOpen) => {
+    const trigger = item.querySelector("[data-accordion-trigger]");
+    const iconOpen = item.querySelector("[data-accordion-icon-open]");
+    const iconClosed = item.querySelector("[data-accordion-icon-closed]");
+
+    (item as HTMLElement).dataset.open = isOpen ? "true" : "false";
+    if (trigger) trigger.setAttribute("aria-expanded", String(isOpen));
+    if (iconOpen) iconOpen.classList.toggle("hidden", !isOpen);
+    if (iconClosed) iconClosed.classList.toggle("hidden", isOpen);
+  };
+
+  accordions.forEach((accordion) => {
+    const items = Array.from(accordion.querySelectorAll("[data-accordion-item]"));
+    if (!items.length) return;
+    const defaultOpenItem = accordion.querySelector("[data-accordion-default-open]");
+    
+    const closeAll = () => {
+      items.forEach((item) => setItemOpen(item as HTMLElement, false));
+    };
+    
+    items.forEach((item: Element) => {
+      setItemOpen(item as HTMLElement, false);
+      const trigger = item.querySelector("[data-accordion-trigger]");
+      if (!trigger) return;
+      
+      trigger.addEventListener("click", () => {
+        const isOpen = (item as HTMLElement).dataset.open === "true";
+        closeAll();
+        if (!isOpen) setItemOpen(item, true);
+      });
+    });
+
+    if (defaultOpenItem) {
+      setItemOpen(defaultOpenItem as HTMLElement, true);
+    }
+  });
+</script>
+
+<style>
+  :global([data-accordion-content]) {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    overflow: hidden;
+    border-top: 0;
+    transition: grid-template-rows 240ms ease, opacity 240ms ease;
+  }
+
+  :global([data-accordion-content] > [data-accordion-content-inner]) {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  :global([data-accordion-item][data-open="true"] [data-accordion-content]) {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  :global([data-accordion-item][data-open="true"] [data-accordion-content-inner]) {
+    padding: 1rem 1.25rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global([data-accordion-content]) {
+      transition: none;
+    }
+  }
+</style>

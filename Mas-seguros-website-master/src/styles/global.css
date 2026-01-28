@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white text-slate-900 font-sans text-base font-normal;
+}
+
+@layer components {
+  .content-row {
+    @apply  mt-0 w-full !important;
+  }
+
+  .content-row__inner {
+    @apply container;
+  }
+
+  .title-heading {
+    @apply font-heading font-extrabold leading-[1.3em];
+  }
+
+  .subtext {
+    @apply font-sans font-normal text-[20px] leading-[1.3em];
+  }
+
+  .texto-parrafo {
+    @apply font-sans font-normal text-base;
+  }
+}

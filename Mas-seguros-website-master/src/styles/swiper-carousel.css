@@ -1,0 +1,66 @@
+#app {
+  height: 100%;
+}
+
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+}
+
+.mySwiper .swiper-pagination {
+  position: static;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.mySwiper .swiper-pagination-track {
+  position: relative;
+  width: 100%;
+  max-width: 120px;
+  height: 8px;
+  background: #eaeaea;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.mySwiper .swiper-pagination-indicator {
+  position: absolute;
+  top: 0;
+  left: calc(var(--pagination-index) * (100% / var(--pagination-steps)));
+  width: calc(100% / var(--pagination-steps));
+  height: 100%;
+  border-radius: 999px;
+  transition: left 0.3s ease-in-out;
+}
+
+
+.equalHeightSwiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.equalHeightSwiper .swiper-slide.equalHeightSlide {
+  height: auto;
+  display: flex;
+}
+
+.equalHeightSwiper .swiper-slide.equalHeightSlide > .equalHeightCard {
+  height: 100%;
+}
+
+.carouselNosotrosHistoria.equalHeightSwiper {
+  overflow: visible;
+}
+
+.carouselNosotrosHistoria.equalHeightSwiper .swiper-slide.equalHeightSlide .equalHeightCard {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+}
+
+.carouselNosotrosHistoria.equalHeightSwiper .swiper-slide.equalHeightSlide.is-center .equalHeightCard {
+  background-color: #fab951;
+  transform: scaleY(1.05);
+}
